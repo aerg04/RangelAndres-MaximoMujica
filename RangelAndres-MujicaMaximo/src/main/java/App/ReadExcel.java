@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
+import primitivas.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,10 +37,10 @@ public class ReadExcel {
     public ReadExcel() {
     }
     
-    public Object[] ReadFile(){
+    public void ReadFile(){
         Object[] output = new Object[4];
         // Cargar archivo de Excel
-//        this.SelectFile();
+//        this.selectFile();
         try {
             File Fil = new File(ruta); //Se crea un archivo File
             FileInputStream file = new FileInputStream(Fil); //Se crea archivo FileInput para la lectura
@@ -81,9 +82,36 @@ public class ReadExcel {
                             str_auxiliar += celda.getStringCellValue() + ",";;
                             
                         }
-                        // Dependiendo del formato de la celda el valor se debe mostrar como String, Fecha, boolean, entero...
+                        // Dependiendo del formato de la celda el valor se debe mostrar como String, Fecha, entero...
                         
                         }
+                    switch (Hojas){
+                        case 0:
+                            if(!"ci,primer_nombre,segundo_nombre,email,genero,tipo_hab,celular,llegada,salida,".equals(str_auxiliar)){
+//                                Se crea objeto Booking se añade al arbol, id ocmo id BinaryTree
+                            }
+                            break;
+                        case 1:
+                            if(!"num_hab,tipo_hab,piso,".equals(str_auxiliar)){
+//                                Se crea objeto Room se añade al HashTable
+                            }
+                            break;
+                        
+                        case 2:
+                            if(!"num_hab,primer_nombre,apellido,email,genero,celular,llegada,".equals(str_auxiliar)){
+//                                Se crea objeto CurrentClient se añade al HashTable, last + firt igual a la llave
+                            }
+                            break;
+                        case 3:
+                            if(!"ci,primer_nombre,apellido,email,genero,llegada,num_hab,".equals(str_auxiliar)){
+//                                Se crea objeto RcordClient se añade al arbol, habitacion igual a la id
+                            }
+                            break;
+                        
+                    }
+                            
+                    if(Hojas == 1){
+                    }else 
                     System.out.println(str_auxiliar);
                     str_auxiliar = "";
                     }
@@ -91,14 +119,16 @@ public class ReadExcel {
                 file.close();
                 
             }catch (Exception ex) {
-            System.out.println("ERROR: " + ex);
-       
-            // cerramos el libro excel
-
-        } 
-            return output;
-    }
-        public void SelectFile(){
+                    System.out.println("ERROR: " + ex);
+                } 
+//            return output;
+        }
+    
+//        public void saveExcelData(int numHoja, String str_data,){
+//    
+//        }
+        
+        public void selectFile(){
             String ruta_prueba;
             Scanner entrada = null;
             JFileChooser fileChooser = new JFileChooser();

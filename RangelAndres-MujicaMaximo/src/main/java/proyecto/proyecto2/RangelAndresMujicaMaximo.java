@@ -4,6 +4,7 @@
 
 package proyecto.proyecto2;
 import App.*;
+import primitivas.*;
 /**
  *
  * @author DELL
@@ -11,7 +12,8 @@ import App.*;
 public class RangelAndresMujicaMaximo {
 
     public static void main(String[] args) {
-        ReadExcel app = new ReadExcel();
-        app.ReadFile();
+        HashTable prueba = new HashTable(300);
+        ReadExcel read = new ReadExcel();
+        read.ReadFile();
     }
 }

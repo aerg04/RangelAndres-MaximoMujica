@@ -3,7 +3,7 @@
  */
 
 package proyecto.proyecto2;
-
+import App.*;
 /**
  *
  * @author DELL
@@ -11,6 +11,7 @@ package proyecto.proyecto2;
 public class RangelAndresMujicaMaximo {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ReadExcel app = new ReadExcel();
+        app.ReadFile();
     }
 }

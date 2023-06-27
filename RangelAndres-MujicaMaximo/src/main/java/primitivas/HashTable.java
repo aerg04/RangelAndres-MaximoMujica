@@ -34,6 +34,11 @@ public class HashTable<T> {
         array[index].appendLast(new_object);;
     }
     
+    public void insert(int index, T new_object){
+//        int index = this.HashFuntion(key);
+        array[index].appendLast(new_object);;
+    }
+    
     
     public List search(String key){
         int index = this.HashFuntion(key);

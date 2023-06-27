@@ -37,7 +37,7 @@ public class ReadExcel {
     public ReadExcel() {
     }
     
-    public void ReadFile(){
+    public void ReadFile(HashTable current, HashTable aux, HashTable rooms, Binary_Tree bookings){
         Object[] output = new Object[4];
         // Cargar archivo de Excel
 //        this.selectFile();
@@ -68,8 +68,10 @@ public class ReadExcel {
                     // Obtenemos el iterator que permite recorres todas las celdas de una fila
                     Iterator<Cell> cellIterator = row.cellIterator();
                     Cell celda;
+                    System.out.println(row.getRowNum());
                     while (cellIterator.hasNext()) {
                         celda = cellIterator.next();
+//                        System.out.println;
 //                        celda.setCellType(CellType._NONE);
                         if(celda.getCellType() == CellType.NUMERIC){
                             if (DateUtil.isCellDateFormatted(celda)) {
@@ -81,38 +83,14 @@ public class ReadExcel {
                         }else if(celda.getCellType() == CellType.STRING){
                             str_auxiliar += celda.getStringCellValue() + ",";;
                             
+                        }else{
+                            str_auxiliar += celda.getDateCellValue() +",";
                         }
                         // Dependiendo del formato de la celda el valor se debe mostrar como String, Fecha, entero...
                         
                         }
-                    switch (Hojas){
-                        case 0:
-                            if(!"ci,primer_nombre,segundo_nombre,email,genero,tipo_hab,celular,llegada,salida,".equals(str_auxiliar)){
-//                                Se crea objeto Booking se añade al arbol, id ocmo id BinaryTree
-                            }
-                            break;
-                        case 1:
-                            if(!"num_hab,tipo_hab,piso,".equals(str_auxiliar)){
-//                                Se crea objeto Room se añade al HashTable
-                            }
-                            break;
-                        
-                        case 2:
-                            if(!"num_hab,primer_nombre,apellido,email,genero,celular,llegada,".equals(str_auxiliar)){
-//                                Se crea objeto CurrentClient se añade al HashTable, last + firt igual a la llave
-                            }
-                            break;
-                        case 3:
-                            if(!"ci,primer_nombre,apellido,email,genero,llegada,num_hab,".equals(str_auxiliar)){
-//                                Se crea objeto RcordClient se añade al arbol, habitacion igual a la id
-                            }
-                            break;
-                        
-                    }
-                            
-                    if(Hojas == 1){
-                    }else 
                     System.out.println(str_auxiliar);
+//                        this.saveExcelData(i, str_auxiliar, current, aux,  rooms, bookings);
                     str_auxiliar = "";
                     }
                 }
@@ -124,9 +102,48 @@ public class ReadExcel {
 //            return output;
         }
     
-//        public void saveExcelData(int numHoja, String str_data,){
-//    
-//        }
+        public void saveExcelData(int numHoja, String str_auxiliar, HashTable current, HashTable aux, HashTable rooms, Binary_Tree bookings){
+            String[] array = str_auxiliar.split(",");
+            for (int i = 0; i < array.length; i++) {
+                
+                System.out.println(array[i]);
+            }
+            System.out.println(str_auxiliar);
+            switch (numHoja){
+                        case 0:
+                            if(!"ci,primer_nombre,segundo_nombre,email,genero,tipo_hab,celular,llegada,salida,".equals(str_auxiliar)){
+//                                Se crea objeto Booking se añade al arbol, id ocmo id BinaryTree
+                                Booking reservation = new Booking(array[1],array[2],array[3],array[4],array[5],array[6],array[7],array[8],Integer.parseInt(array[0]));
+                                bookings.insert(reservation, Integer.parseInt(array[8]));
+                            }
+                            break;
+                        case 1:
+                            if(!"num_hab,tipo_hab,piso,".equals(str_auxiliar)){
+//                                Se crea objeto Room se añade al HashTable
+                                Room room = new Room(array[0],array[1],array[2]);
+                                rooms.insert(Integer.parseInt(array[0]), room);
+                            }
+                            break;
+                        
+                        case 2:
+                            if(!"num_hab,primer_nombre,apellido,email,genero,celular,llegada,".equals(str_auxiliar)){
+//                                Se crea objeto CurrentClient se añade al HashTable, last + firt igual a la llave
+                                  if(this.isNumeric(array[0])){
+                                      CurrentClient client = new CurrentClient(array[0],array[1],array[2],array[3],array[4],array[5],array[6]);
+                                      current.insert(array[2] + array[1], client);
+                                  }
+                            }
+                            break;
+                        case 3:
+                            if(!"ci,primer_nombre,apellido,email,genero,llegada,num_hab,".equals(str_auxiliar)){
+//                                Se crea objeto RcordClient se añade al arbol, habitacion igual a la id
+                            }
+                            ClientRecord record = new ClientRecord(array[0],array[1],array[2],array[3],array[4],array[5],array[6]);
+                            aux.insert(Integer.parseInt(array[6]), record);
+                            break;
+                        
+                    }
+        }
         
         public void selectFile(){
             String ruta_prueba;
@@ -150,4 +167,12 @@ public class ReadExcel {
                         System.out.println("No se ha seleccionado ningún archivo");
                 }
             }
+        public boolean isNumeric(String str) { 
+        try {  
+          Double.parseDouble(str);  
+          return true;
+        } catch(NumberFormatException e){  
+          return false;  
+        }  
+        }
         }

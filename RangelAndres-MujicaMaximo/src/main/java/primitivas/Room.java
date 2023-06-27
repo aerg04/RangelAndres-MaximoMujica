@@ -18,4 +18,9 @@ public class Room {
         this.type = type;
         this.floor = floor;
     }
+    public String showAttributes(){
+        String newline = System.getProperty("line.separator");
+        return "numero de habitación: " + number + newline + "tipo: " + type + newline  + "piso: " + floor;
+    }
+    
 }

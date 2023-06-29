@@ -4,6 +4,9 @@
  */
 package primitivas;
 
+import java.time.LocalDate;
+//import java.util.LocalDate;
+
 /**
  *
  * @author DELL
@@ -12,15 +15,21 @@ public class Booking {
     private String last_name;
     private String first_name;
     private String gender;
-    private String arrival;
+    private LocalDate exit;
+    private String type;
+    
+//    private String gender;
+    private LocalDate arrival;
     private String cellphone;
     private String email;
-    private String id;
+    private int id;
 
-    public Booking(String last_name, String first_name, String gender, String arrival, String cellphone, String email, String id) {
+    public Booking(String first_name, String last_name,String email,  String gender,String type, LocalDate arrival, String cellphone, LocalDate exit,     int id) {
         this.last_name = last_name;
         this.first_name = first_name;
         this.gender = gender;
+        this.exit = exit;
+        this.type = type;
         this.arrival = arrival;
         this.cellphone = cellphone;
         this.email = email;
@@ -39,7 +48,7 @@ public class Booking {
         return gender;
     }
 
-    public String getArrival() {
+    public LocalDate getArrival() {
         return arrival;
     }
 
@@ -51,9 +60,18 @@ public class Booking {
         return email;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
+
+    public LocalDate getExit() {
+        return exit;
+    }
+
+    public String getType() {
+        return type;
+    }
+    
     
 }
 

@@ -4,6 +4,9 @@
  */
 package primitivas;
 
+import java.time.LocalDate;
+//import java.util.LocalDate;
+
 /**
  *
  * @author DELL
@@ -12,19 +15,19 @@ public class CurrentClient {
     private String last_name;
     private String first_name;
     private String gender;
-    private String arrival;
+    private LocalDate arrival;
     private String cellphone;
     private String email;
-    private String id;
+    private String room;
 
-    public CurrentClient(String last_name, String first_name, String gender, String arrival, String cellphone, String email, String id) {
+    public CurrentClient(String room, String first_name, String last_name, String email,  String gender, String cellphone,  LocalDate arrival) {
         this.last_name = last_name;
         this.first_name = first_name;
         this.gender = gender;
         this.arrival = arrival;
         this.cellphone = cellphone;
         this.email = email;
-//        this.id = id;
+        this.room = room;
     }
 
     public String getLast_name() {
@@ -39,7 +42,7 @@ public class CurrentClient {
         return gender;
     }
 
-    public String getArrival() {
+    public LocalDate getArrival() {
         return arrival;
     }
 
@@ -51,8 +54,8 @@ public class CurrentClient {
         return email;
     }
 
-//    public String getId() {
-//        return id;
-//    }
+    public String getId() {
+        return room;
+    }
     
 }

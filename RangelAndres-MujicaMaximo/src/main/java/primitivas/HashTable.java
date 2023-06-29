@@ -15,7 +15,27 @@ public class HashTable<T> {
     public HashTable(int number){
         size = number;
         array = new List[number];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = new List();
+        }
     }
+
+    public List[] getArray() {
+        return array;
+    }
+
+    public void setArray(List[] array) {
+        this.array = array;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+    
     public int HashFuntion(String key){
 //        debe ser sin espacio y minuscula
         int hash_output, dividend;
@@ -31,6 +51,14 @@ public class HashTable<T> {
     }
     public void insert(String key, T new_object){
         int index = this.HashFuntion(key);
+        if(index > size){
+            System.out.println(index);
+        }
+        array[index].appendLast(new_object);;
+    }
+    
+    public void insert(int index, T new_object){
+//        int index = this.HashFuntion(key);
         array[index].appendLast(new_object);;
     }
     
@@ -44,6 +72,16 @@ public class HashTable<T> {
             return null;
         }
     }
+    public List search(int index){
+//        int index = this.HashFuntion(key);
+        try{
+            return array[index];
+            
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
     public void delete(String key){
         int index = this.HashFuntion(key);
         try{
@@ -54,4 +92,5 @@ public class HashTable<T> {
 //            return null;
         }
     }
+    
 }

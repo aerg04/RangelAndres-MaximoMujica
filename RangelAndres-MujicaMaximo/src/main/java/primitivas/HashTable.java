@@ -42,7 +42,7 @@ public class HashTable<T> {
         int hashvalue = key.replace(" ", "").toLowerCase().hashCode();
         if(hashvalue <0)
             hashvalue = hashvalue*(-1);
-        System.out.println(hashvalue);
+//        System.out.println(hashvalue);
         dividend = hashvalue % size;
 //        System.out.println(hashvalue % size);
         hash_output = dividend;
@@ -65,6 +65,7 @@ public class HashTable<T> {
     
     public List search(String key){
         int index = this.HashFuntion(key);
+        System.out.println(index);
         try{
             return array[index];
             

@@ -35,6 +35,19 @@ public class Booking {
         this.email = email;
         this.id = id;
     }
+    
+    public String showAttributes(){
+        String newline = System.getProperty("line.separator");
+        return "apellido: " + last_name + newline +
+                "nombre: " + first_name + newline +
+                "id: " + id + newline +
+                "genero: " + gender + newline +
+                "llegada: " +  arrival + newline +
+                "celular: " +   cellphone + newline +
+                "email: " + email +   newline +
+                "salida: " + exit   + newline+
+                "tipo: " + type   + newline;
+    }
 
     public String getLast_name() {
         return last_name;

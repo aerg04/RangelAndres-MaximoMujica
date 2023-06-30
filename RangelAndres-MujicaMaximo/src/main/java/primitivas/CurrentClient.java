@@ -29,6 +29,24 @@ public class CurrentClient {
         this.email = email;
         this.room = room;
     }
+    public String showAttributes(){
+        String newline = System.getProperty("line.separator");
+        return "apellido: " + last_name + newline +
+                "nombre: " + first_name + newline +
+                "genero: " + gender + newline +
+                "llegada: " +  arrival + newline +
+                "celular: " +   cellphone + newline +
+                "email: " + email +   newline +
+                "habiación: " + room   + newline;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
 
     public String getLast_name() {
         return last_name;

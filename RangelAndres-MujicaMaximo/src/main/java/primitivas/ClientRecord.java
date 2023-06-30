@@ -32,6 +32,17 @@ public class ClientRecord {
         this.room = room;
     }
 
+    public String showAttributes(){
+        String newline = System.getProperty("line.separator");
+        return "apellido: " + lastname + newline +
+                "nombre: " + firstname + newline +
+                "genero: " + gender + newline +
+                "llegada: " +  arrival + newline +
+                "email: " + email +   newline +
+                "habiación: " + room   + newline;
+//                "celular: " +   cellphone + newline +
+    }
+    
     public String getId() {
         return id;
     }

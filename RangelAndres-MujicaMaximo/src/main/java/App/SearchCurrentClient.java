@@ -15,14 +15,15 @@ public class SearchCurrentClient {
     }
     public CurrentClient getInfoClient(String name, HashTable database ){
         List list = database.search(name.replace(" ", "").toLowerCase());
-        if(list == null){
+        if(list != null){
             NodoList <CurrentClient> pAux;
             pAux = list.getHead();
             if(list.getSize() == 1){
                 return pAux.getValue();
             }else{
                 while(pAux != null){
-                    if(name.equals((pAux.getValue().getFirst_name() + pAux.getValue().getFirst_name()).replace(" ", "").toLowerCase())){
+                    System.out.println(pAux.getValue().getLast_name()+pAux.getValue().getFirst_name());
+                    if(name.equals((pAux.getValue().getLast_name()+pAux.getValue().getFirst_name()).replace(" ", "").toLowerCase())){
                         return pAux.getValue();
                     }
                     pAux = pAux.getpNext();

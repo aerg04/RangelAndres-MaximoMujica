@@ -119,7 +119,7 @@ public class ReadExcel {
         public void saveExcelData(int numHoja, String str_auxiliar, HashTable current, HashTable aux, HashTable rooms, Binary_Tree bookings){
             String[] array = str_auxiliar.split(",");
             
-            System.out.println(str_auxiliar);
+//            System.out.println(str_auxiliar);
 //            System.out.println(this.converToDate("Mon Jun 18 00:00:00 IST 2012"));
             switch (numHoja){
                         case 0:

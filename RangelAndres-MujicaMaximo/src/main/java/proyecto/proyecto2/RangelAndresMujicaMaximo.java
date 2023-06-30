@@ -21,13 +21,24 @@ public class RangelAndresMujicaMaximo {
         HashTable current_clients = new HashTable(300);
         Binary_Tree bookings = new Binary_Tree();
         Binary_Tree record = new Binary_Tree();
-        SearchRecordClient app_record = new SearchRecordClient();
         
+        SearchRecordBooking app_record = new SearchRecordBooking();
+        SearchCurrentClient app_current = new SearchCurrentClient();
+                
         ReadExcel read = new ReadExcel();
         read.ReadFile(current_clients,aux_record,rooms,bookings);
         app_record.convertHashTable(aux_record, record);
-        System.out.println(record.getSize());
-        System.out.println(aux_record.getSize());
+        
+//        CurrentClient p = app_current.getInfoClient("BriandEven", current_clients);
+//        System.out.println(p.showAttributes());
+        
+        System.out.println(app_record.searchBooking(13502927, bookings).showAttributes());
+        System.out.println(app_record.searchRecord(1, record));
+        bookings.delete(13502927);
+//        System.out.println(app_record.searchBooking(13502927, bookings).showAttributes());
+        System.out.println(app_record.searchBooking(13369274, bookings).showAttributes());
+        
+        
 //        
 //        DateTimeFormatter f = DateTimeFormatter.ofPattern( "EEE MMM dd HH:mm:ss zzz uuuu", Locale.ENGLISH ) ;
 //        ZonedDateTime zdt = ZonedDateTime.parse( "Mon Jun 18 00:00:00 IST 2012" , f ) ;

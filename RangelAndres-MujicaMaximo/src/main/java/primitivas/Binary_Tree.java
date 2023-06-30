@@ -55,8 +55,9 @@ public class Binary_Tree<T> {
         return this.searchRecursive(root, id);
     }
     
-    public Nodo searchRecursive(Nodo proot, int id){
+    private Nodo searchRecursive(Nodo proot, int id){
         if(proot != null){
+//                System.out.println(proot.getId());
             if(id == proot.getId()){
                 return proot;
             }else{
